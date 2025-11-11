@@ -1,12 +1,41 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Dashboard from "@/components/Dashboard";
+import TestingPanel from "@/components/TestingPanel";
+import { Activity, FlaskConical } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Tabs defaultValue="dashboard" className="w-full">
+        <div className="border-b border-border bg-card/50 backdrop-blur">
+          <div className="mx-auto max-w-7xl px-6">
+            <TabsList className="h-16 bg-transparent">
+              <TabsTrigger
+                value="dashboard"
+                className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
+                <Activity className="h-4 w-4" />
+                Dashboard
+              </TabsTrigger>
+              <TabsTrigger
+                value="testing"
+                className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
+                <FlaskConical className="h-4 w-4" />
+                Testing
+              </TabsTrigger>
+            </TabsList>
+          </div>
+        </div>
+
+        <TabsContent value="dashboard" className="m-0">
+          <Dashboard />
+        </TabsContent>
+
+        <TabsContent value="testing" className="m-0">
+          <TestingPanel />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
